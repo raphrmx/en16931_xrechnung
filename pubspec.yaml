@@ -1,0 +1,26 @@
+name: en16931_xrechnung
+description: >-
+  The XRechnung profile of the European electronic invoice: the identifiers it
+  is claimed under, and the rules Germany adds to EN 16931.
+version: 0.1.0
+homepage: https://www.comapps.be
+repository: https://github.com/raphrmx/en16931_xrechnung
+issue_tracker: https://github.com/raphrmx/en16931_xrechnung/issues
+topics:
+  - einvoicing
+  - en16931
+  - xrechnung
+  - invoice
+  - vat
+
+environment:
+  sdk: ^3.3.0
+
+dependencies:
+  decimal: ^3.2.6
+  en16931: ^0.1.0
+
+dev_dependencies:
+  lint: ^2.4.0
+  test: ^1.25.7
+  xml: ^6.5.0
