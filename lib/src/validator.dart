@@ -25,18 +25,18 @@ RuleDescriptor xrechnungRuleFor(String id) {
 
 /// The XRechnung rules this package evaluates.
 Set<String> get implementedXrechnungRules => {
-      ...xrechnungRules.keys,
-      ...xrechnungExtensionRules.keys,
-      ...xrechnungCleanVehiclesRules.keys,
-    };
+  ...xrechnungRules.keys,
+  ...xrechnungExtensionRules.keys,
+  ...xrechnungCleanVehiclesRules.keys,
+};
 
 /// Every XRechnung rule this package has an answer for, whichever the answer
 /// is.
 Set<String> get accountedXrechnungRules => {
-      ...implementedXrechnungRules,
-      ...xrechnungMetByConstruction.keys,
-      ...xrechnungForTheSyntax.keys,
-    };
+  ...implementedXrechnungRules,
+  ...xrechnungMetByConstruction.keys,
+  ...xrechnungForTheSyntax.keys,
+};
 
 /// The rules of the standard a profile rewrites, and what rewrites them.
 ///
@@ -52,9 +52,7 @@ const Map<XrechnungProfile, Map<String, String>> xrechnungOverrides = {
     'BR-CL-25': 'BR-DEX-07',
     'BR-CL-26': 'BR-DEX-08',
   },
-  XrechnungProfile.cleanVehicles: {
-    'BR-CL-13': 'BR-TMP-CVD-01',
-  },
+  XrechnungProfile.cleanVehicles: {'BR-CL-13': 'BR-TMP-CVD-01'},
 };
 
 /// What [invoice] breaks, under the standard and under XRechnung.
@@ -70,9 +68,9 @@ const Map<XrechnungProfile, Map<String, String>> xrechnungOverrides = {
 List<RuleViolation> validateXrechnung(Invoice invoice) {
   final profile = xrechnungProfileOf(invoice);
   final overridden = xrechnungOverrides[profile] ?? const {};
-  final violations = validate(invoice)
-      .where((violation) => !overridden.containsKey(violation.rule.id))
-      .toList();
+  final violations = validate(
+    invoice,
+  ).where((violation) => !overridden.containsKey(violation.rule.id)).toList();
   final checks = {
     ...xrechnungRules,
     if (profile == XrechnungProfile.extension) ...xrechnungExtensionRules,

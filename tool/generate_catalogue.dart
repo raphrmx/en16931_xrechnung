@@ -17,9 +17,20 @@ import 'dart:io';
 
 import 'package:xml/xml.dart';
 
+/// The release the artefacts are read from.
+///
+/// A tag rather than a branch, so that generating the catalogue twice gives
+/// the same catalogue twice. KoSIT revises XRechnung twice a year, and
+/// reading from a moving branch leaves the package saying which rules it
+/// covers without being able to say against what.
+///
+/// Raising this is a deliberate act: bump it, regenerate, and read what the
+/// diff says before committing it.
+const String artefactRelease = 'v2.6.0';
+
 const String _base =
     'https://raw.githubusercontent.com/itplr-kosit/xrechnung-schematron/'
-    'master/src/validation/schematron';
+    '$artefactRelease/src/validation/schematron';
 
 const Map<String, String> _sources = {
   'artefacts/xrechnung-common.sch': '$_base/common.sch',
@@ -86,6 +97,16 @@ Future<void> main(List<String> arguments) async {
   );
   File(_output).writeAsStringSync(_emit(catalogue, version, lists));
 
+  // The emitted lists run past the column the formatter wraps at, so what is
+  // written and what is committed would differ by a reflow. Formatting here
+  // keeps them the same file, which is what lets the build compare them.
+  final formatted = Process.runSync('dart', ['format', _output]);
+  if (formatted.exitCode != 0) {
+    stderr.writeln('dart format failed: ${formatted.stderr}');
+    exitCode = 1;
+    return;
+  }
+
   final names = lists.keys.toList()..sort();
   for (final name in names) {
     stdout.writeln('  $name: ${lists[name]!.length} codes');
@@ -142,8 +163,9 @@ Future<void> _fetch(String url, String target) async {
 
 /// The release the artefacts are written for.
 String? _version(String common) {
-  final match = RegExp('name="XR-MAJOR-MINOR-VERSION" value="\'([0-9.]+)\'"')
-      .firstMatch(common);
+  final match = RegExp(
+    'name="XR-MAJOR-MINOR-VERSION" value="\'([0-9.]+)\'"',
+  ).firstMatch(common);
   return match?.group(1);
 }
 
@@ -263,7 +285,7 @@ const Map<String, String> _listDoc = {
       'The registers a party identifier (BT-29, BT-46) may be issued under.',
   'xrechnungElectronicAddressSchemes':
       'The registers an electronic address (BT-34, BT-49) may be issued '
-          'under.',
+      'under.',
   'xrechnungDigaSchemes':
       'The registers the extension adds for digital health applications.',
   'xrechnungItemClassificationSchemes':

@@ -110,7 +110,9 @@ void main() {
         contains('BR-DE-15'),
       );
       expect(
-          breaches(validInvoice(buyerReference: '  ')), contains('BR-DE-15'));
+        breaches(validInvoice(buyerReference: '  ')),
+        contains('BR-DE-15'),
+      );
     });
 
     test('BR-DE-16 wants the seller identified for tax', () {
@@ -142,9 +144,7 @@ void main() {
     });
 
     test('BR-DE-17 keeps to the eight type codes', () {
-      final invoice = validInvoice(
-        typeCode: InvoiceTypeCode.factoredInvoice,
-      );
+      final invoice = validInvoice(typeCode: InvoiceTypeCode.factoredInvoice);
       expect(breaches(invoice), contains('BR-DE-17'));
     });
 
@@ -180,16 +180,12 @@ void main() {
     });
 
     test('BR-DE-26 asks a corrected invoice which one it corrects', () {
-      final invoice = validInvoice(
-        typeCode: InvoiceTypeCode.correctedInvoice,
-      );
+      final invoice = validInvoice(typeCode: InvoiceTypeCode.correctedInvoice);
       expect(breaches(invoice), contains('BR-DE-26'));
 
       final corrected = validInvoice(
         typeCode: InvoiceTypeCode.correctedInvoice,
-        precedingInvoices: const [
-          PrecedingInvoiceReference('2026-0041'),
-        ],
+        precedingInvoices: const [PrecedingInvoiceReference('2026-0041')],
       );
       expect(breaches(corrected), isNot(contains('BR-DE-26')));
     });
@@ -240,10 +236,7 @@ void main() {
     test('BR-TMP-2 wants an absolute link to an external document', () {
       final invoice = validInvoice(
         supportingDocuments: [
-          SupportingDocument(
-            'A',
-            externalUri: Uri.parse('beleg.pdf'),
-          ),
+          SupportingDocument('A', externalUri: Uri.parse('beleg.pdf')),
         ],
       );
       expect(breaches(invoice), contains('BR-TMP-2'));
@@ -445,10 +438,7 @@ void main() {
 
     test('BR-DE-CVD-01 and BR-DE-CVD-02 want the procurement references', () {
       final invoice = _vehicleInvoice(contract: null, tender: null);
-      expect(
-        breaches(invoice),
-        containsAll(['BR-DE-CVD-01', 'BR-DE-CVD-02']),
-      );
+      expect(breaches(invoice), containsAll(['BR-DE-CVD-01', 'BR-DE-CVD-02']));
     });
 
     test('BR-DE-CVD-03 wants at least one vehicle on the invoice', () {
@@ -545,38 +535,38 @@ void main() {
 }
 
 SupportingDocument _attached(String mimeCode) => SupportingDocument(
-      'A',
-      attachment: Attachment(
-        bytes: Uint8List(1),
-        mimeCode: mimeCode,
-        filename: 'beleg',
-      ),
-    );
+  'A',
+  attachment: Attachment(
+    bytes: Uint8List(1),
+    mimeCode: mimeCode,
+    filename: 'beleg',
+  ),
+);
 
 /// The same invoice with the rate taken off its breakdown, which is how an
 /// invoice read from elsewhere comes back when the document left it out.
 Invoice _withoutBreakdownRate(Invoice invoice) => Invoice(
-      number: invoice.number,
-      issueDate: invoice.issueDate,
-      typeCode: invoice.typeCode,
-      currency: invoice.currency,
-      specificationIdentifier: invoice.specificationIdentifier,
-      buyerReference: invoice.buyerReference,
-      seller: invoice.seller,
-      buyer: invoice.buyer,
-      lines: invoice.lines,
-      delivery: invoice.delivery,
-      paymentInstructions: invoice.paymentInstructions,
-      totals: invoice.totals,
-      vatBreakdown: [
-        for (final entry in invoice.vatBreakdown)
-          VatBreakdown(
-            category: entry.category,
-            taxableAmount: entry.taxableAmount,
-            taxAmount: entry.taxAmount,
-          ),
-      ],
-    );
+  number: invoice.number,
+  issueDate: invoice.issueDate,
+  typeCode: invoice.typeCode,
+  currency: invoice.currency,
+  specificationIdentifier: invoice.specificationIdentifier,
+  buyerReference: invoice.buyerReference,
+  seller: invoice.seller,
+  buyer: invoice.buyer,
+  lines: invoice.lines,
+  delivery: invoice.delivery,
+  paymentInstructions: invoice.paymentInstructions,
+  totals: invoice.totals,
+  vatBreakdown: [
+    for (final entry in invoice.vatBreakdown)
+      VatBreakdown(
+        category: entry.category,
+        taxableAmount: entry.taxableAmount,
+        taxAmount: entry.taxAmount,
+      ),
+  ],
+);
 
 /// An invoice for a vehicle, under the clean vehicles profile.
 Invoice _vehicleInvoice({
@@ -589,12 +579,11 @@ Invoice _vehicleInvoice({
   final lines = [
     InvoiceLine.of(
       id: '1',
-      item: item ??
+      item:
+          item ??
           Item(
             name: 'Lieferwagen',
-            classificationIdentifiers: [
-              Identifier(category, scheme: 'CVD'),
-            ],
+            classificationIdentifiers: [Identifier(category, scheme: 'CVD')],
             attributes: [ItemAttribute('cva', attribute)],
           ),
       quantity: 1,

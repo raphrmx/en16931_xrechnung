@@ -2,10 +2,10 @@
 
 # EN 16931 XRechnung
 
-[![Build](https://img.shields.io/github/actions/workflow/status/raphrmx/en16931_xrechnung/ci.yml?branch=main&label=build)](https://github.com/raphrmx/en16931_xrechnung/actions/workflows/ci.yml)
+![Build](https://img.shields.io/github/actions/workflow/status/raphrmx/en16931_xrechnung/ci.yml?branch=main&label=build)
 [![Pub Version](https://img.shields.io/pub/v/en16931_xrechnung?color=blue)](https://pub.dev/packages/en16931_xrechnung)
 [![Maintainer](https://img.shields.io/badge/Maintainer-Raphael_Vrient-purple)](https://pub.dev/publishers/comapps.be/packages)
-[![License](https://img.shields.io/badge/Licence-MIT-blue)](/LICENSE)
+[![License](https://img.shields.io/badge/Licence-MIT-blue)](https://pub.dev/packages/en16931_xrechnung/license)
 ![Maintenance](https://img.shields.io/badge/Maintained-yes-success)
 
 XRechnung 3.0: the 61 rules Germany adds to EN 16931, and the identifiers an
@@ -18,8 +18,8 @@ satisfy the standard and still be refused. This says so before it is sent.
 
 ```yaml
 dependencies:
-  en16931: ^0.1.0
-  en16931_xrechnung: ^0.1.0
+  en16931: ^0.1.2
+  en16931_xrechnung: ^0.1.1
 ```
 
 ## Check an invoice
@@ -121,11 +121,14 @@ It says whether an invoice is ready to send, and nothing else. The model and
 the rules of the standard are in
 [en16931](https://pub.dev/packages/en16931), and the document is written by
 [en16931_cii](https://pub.dev/packages/en16931_cii) or
-[en16931_ubl](https://pub.dev/packages/en16931_ubl). Delivering it to the
-public body is a different problem again.
+[en16931_ubl](https://pub.dev/packages/en16931_ubl). How it reaches the public
+body, over Peppol or through one of the German portals, does not change the
+document.
 
 ## License
 
-MIT. The artefacts it is generated from are Apache 2.0 and are not
-redistributed: what is taken from them is which rules exist, how severe each
-is and which terms it bears on.
+Released under the [MIT licence](https://pub.dev/packages/en16931_xrechnung/license).
+
+The rule catalogue is generated from the artefacts KoSIT publishes, which are
+Apache 2.0. None of their content is redistributed: what is taken from them is
+which rules exist, how severe each is and which terms it bears on.

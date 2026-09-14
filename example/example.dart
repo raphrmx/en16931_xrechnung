@@ -16,8 +16,10 @@ void main() {
     seller: const Seller(
       name: 'COMAPPS GmbH',
       vatIdentifier: 'DE123456789',
-      electronicAddress:
-          Identifier('991-33333TEST-33', scheme: Scheme.germanLeitwegId),
+      electronicAddress: Identifier(
+        '991-33333TEST-33',
+        scheme: Scheme.germanLeitwegId,
+      ),
       address: Address(
         line1: 'Musterstrasse 1',
         city: 'Berlin',
@@ -32,8 +34,10 @@ void main() {
     ),
     buyer: const Buyer(
       name: 'Bundesamt',
-      electronicAddress:
-          Identifier('991-33333TEST-33', scheme: Scheme.germanLeitwegId),
+      electronicAddress: Identifier(
+        '991-33333TEST-33',
+        scheme: Scheme.germanLeitwegId,
+      ),
       address: Address(
         line1: 'Amtsweg 2',
         city: 'Bonn',
@@ -48,10 +52,9 @@ void main() {
         CreditTransferAccount('DE89370400440532013000', name: 'COMAPPS GmbH'),
       ],
     ),
-    paymentTerms: skontoPaymentTerms(
-      [Skonto.of(days: 14, percentage: 2)],
-      text: 'Zahlbar innerhalb 30 Tagen.',
-    ),
+    paymentTerms: skontoPaymentTerms([
+      Skonto.of(days: 14, percentage: 2),
+    ], text: 'Zahlbar innerhalb 30 Tagen.'),
     lines: [
       InvoiceLine.of(
         id: '1',

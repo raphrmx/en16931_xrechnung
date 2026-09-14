@@ -10,23 +10,18 @@ import 'package:en16931/en16931.dart';
 /// [skontoPaymentTerms] rather than by hand.
 final class Skonto {
   /// [percentage] off the amount due when it is paid within [days] days.
-  const Skonto({
-    required this.days,
-    required this.percentage,
-    this.baseAmount,
-  });
+  const Skonto({required this.days, required this.percentage, this.baseAmount});
 
   /// The same, from plain numbers.
   factory Skonto.of({
     required int days,
     required num percentage,
     num? baseAmount,
-  }) =>
-      Skonto(
-        days: days,
-        percentage: exact(percentage),
-        baseAmount: baseAmount == null ? null : exact(baseAmount),
-      );
+  }) => Skonto(
+    days: days,
+    percentage: exact(percentage),
+    baseAmount: baseAmount == null ? null : exact(baseAmount),
+  );
 
   /// How many days from the invoice date the discount holds for.
   final int days;
@@ -104,8 +99,9 @@ List<Skonto> readSkonto(String? paymentTerms) {
       Skonto(
         days: int.parse(match.group(1)!),
         percentage: Decimal.parse(match.group(2)!),
-        baseAmount:
-            match.group(3) == null ? null : Decimal.parse(match.group(3)!),
+        baseAmount: match.group(3) == null
+            ? null
+            : Decimal.parse(match.group(3)!),
       ),
     );
   }

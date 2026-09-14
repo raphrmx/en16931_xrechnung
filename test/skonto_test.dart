@@ -30,13 +30,10 @@ void main() {
 
     test('puts the free text above the discounts', () {
       expect(
-        skontoPaymentTerms(
-          [
-            Skonto.of(days: 14, percentage: 2),
-            Skonto.of(days: 30, percentage: 0)
-          ],
-          text: 'Zahlbar innerhalb 30 Tagen.',
-        ),
+        skontoPaymentTerms([
+          Skonto.of(days: 14, percentage: 2),
+          Skonto.of(days: 30, percentage: 0),
+        ], text: 'Zahlbar innerhalb 30 Tagen.'),
         'Zahlbar innerhalb 30 Tagen.\n'
         '#SKONTO#TAGE=14#PROZENT=2.00#\n'
         '#SKONTO#TAGE=30#PROZENT=0.00#\n',
@@ -83,10 +80,9 @@ void main() {
 
     test('takes what skontoPaymentTerms writes', () {
       final invoice = validInvoice(
-        paymentTerms: skontoPaymentTerms(
-          [Skonto.of(days: 14, percentage: 2)],
-          text: 'Zahlbar innerhalb 30 Tagen.',
-        ),
+        paymentTerms: skontoPaymentTerms([
+          Skonto.of(days: 14, percentage: 2),
+        ], text: 'Zahlbar innerhalb 30 Tagen.'),
       );
       expect(breaches(invoice), isEmpty);
     });

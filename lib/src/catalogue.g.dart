@@ -383,11 +383,7 @@ const List<RuleDescriptor> xrechnungCatalogue = [
 /// The registers the extension adds for digital health applications.
 ///
 /// 3 codes.
-const Set<String> xrechnungDigaSchemes = {
-  'XR01',
-  'XR02',
-  'XR03',
-};
+const Set<String> xrechnungDigaSchemes = {'XR01', 'XR02', 'XR03'};
 
 /// The registers an electronic address (BT-34, BT-49) may be issued under.
 ///

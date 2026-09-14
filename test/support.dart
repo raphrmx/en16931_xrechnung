@@ -18,40 +18,42 @@ Invoice validInvoice({
   List<PrecedingInvoiceReference> precedingInvoices = const [],
   List<InvoiceLine>? lines,
   TaxRepresentative? taxRepresentative,
-}) =>
-    Invoice.fromLines(
-      number: '2026-0042',
-      issueDate: DateTime(2026, 9, 13),
-      dueDate: DateTime(2026, 10, 13),
-      specificationIdentifier: specificationIdentifier,
-      typeCode: typeCode,
-      buyerReference: buyerReference,
-      seller: seller ?? validSeller,
-      buyer: buyer ?? validBuyer,
-      delivery: delivery ?? Delivery(date: CalendarDate(2026, 9, 12)),
-      paymentTerms: paymentTerms,
-      paymentInstructions: paymentInstructions ?? validTransfer,
-      supportingDocuments: supportingDocuments,
-      precedingInvoices: precedingInvoices,
-      taxRepresentative: taxRepresentative,
-      lines: lines ??
-          [
-            InvoiceLine.of(
-              id: '1',
-              item: const Item(name: 'Beratung'),
-              quantity: 8,
-              unitPrice: 150.00,
-              vatRate: 19,
-              unit: UnitCode.hour,
-            ),
-          ],
-    );
+}) => Invoice.fromLines(
+  number: '2026-0042',
+  issueDate: DateTime(2026, 9, 13),
+  dueDate: DateTime(2026, 10, 13),
+  specificationIdentifier: specificationIdentifier,
+  typeCode: typeCode,
+  buyerReference: buyerReference,
+  seller: seller ?? validSeller,
+  buyer: buyer ?? validBuyer,
+  delivery: delivery ?? Delivery(date: CalendarDate(2026, 9, 12)),
+  paymentTerms: paymentTerms,
+  paymentInstructions: paymentInstructions ?? validTransfer,
+  supportingDocuments: supportingDocuments,
+  precedingInvoices: precedingInvoices,
+  taxRepresentative: taxRepresentative,
+  lines:
+      lines ??
+      [
+        InvoiceLine.of(
+          id: '1',
+          item: const Item(name: 'Beratung'),
+          quantity: 8,
+          unitPrice: 150.00,
+          vatRate: 19,
+          unit: UnitCode.hour,
+        ),
+      ],
+);
 
 const Seller validSeller = Seller(
   name: 'COMAPPS GmbH',
   vatIdentifier: 'DE123456789',
-  electronicAddress:
-      Identifier('991-33333TEST-33', scheme: Scheme.germanLeitwegId),
+  electronicAddress: Identifier(
+    '991-33333TEST-33',
+    scheme: Scheme.germanLeitwegId,
+  ),
   address: Address(
     line1: 'Musterstrasse 1',
     city: 'Berlin',
@@ -67,8 +69,10 @@ const Seller validSeller = Seller(
 
 const Buyer validBuyer = Buyer(
   name: 'Bundesamt',
-  electronicAddress:
-      Identifier('991-33333TEST-33', scheme: Scheme.germanLeitwegId),
+  electronicAddress: Identifier(
+    '991-33333TEST-33',
+    scheme: Scheme.germanLeitwegId,
+  ),
   address: Address(
     line1: 'Amtsweg 2',
     city: 'Bonn',

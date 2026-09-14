@@ -80,3 +80,28 @@ jobs:
 
       - name: The catalogue is current
         run: git diff --exit-code -- lib/src/catalogue.g.dart
+
+  # The test suite KoSIT publishes, both syntaxes of every business case. It
+  # found four faults in the packages this one reads with, so it earns a place
+  # in the build. It is fetched here and never committed.
+  examples:
+    runs-on: ubuntu-latest
+    name: published examples
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+
+      - name: Install dependencies
+        run: dart pub get
+
+      - name: Fetch the published examples
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: dart run tool/fetch_examples.dart
+
+      - name: Check them
+        run: dart test test/kosit_examples_test.dart

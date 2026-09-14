@@ -1,3 +1,15 @@
+## 0.1.1
+
+- The README says that Peppol and the German portals carry the same document,
+  where it used to end on what the package does not do.
+- The licence badge and the licence section point at the licence page on
+  pub.dev. The README carries no link off to a code host any more.
+- The test suite KoSIT publishes is checked, both syntaxes of every business
+  case. Run `dart run tool/fetch_examples.dart` to pull it in. It found four
+  faults in the packages this one reads with, and none in the rules here.
+- The catalogue is generated from a pinned release of the artefacts,
+  `v2.6.0`, rather than from whatever the KoSIT branch held that day.
+
 ## 0.1.0
 
 First release.
