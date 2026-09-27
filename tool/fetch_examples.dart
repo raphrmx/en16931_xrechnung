@@ -12,12 +12,10 @@
 import 'dart:convert';
 import 'dart:io';
 
-const String _tree =
-    'https://api.github.com/repos/itplr-kosit/'
+const String _tree = 'https://api.github.com/repos/itplr-kosit/'
     'xrechnung-testsuite/git/trees/master?recursive=1';
 
-const String _raw =
-    'https://raw.githubusercontent.com/itplr-kosit/'
+const String _raw = 'https://raw.githubusercontent.com/itplr-kosit/'
     'xrechnung-testsuite/master';
 
 const String _directory = 'examples_from_kosit';
@@ -35,7 +33,8 @@ Future<void> main() async {
     final paths = [
       for (final entry in listing['tree'] as List)
         (entry as Map)['path'] as String,
-    ].where(_isWanted).toList()..sort();
+    ].where(_isWanted).toList()
+      ..sort();
 
     Directory(_directory).createSync(recursive: true);
     for (final path in paths) {

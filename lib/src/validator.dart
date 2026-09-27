@@ -25,18 +25,18 @@ RuleDescriptor xrechnungRuleFor(String id) {
 
 /// The XRechnung rules this package evaluates.
 Set<String> get implementedXrechnungRules => {
-  ...xrechnungRules.keys,
-  ...xrechnungExtensionRules.keys,
-  ...xrechnungCleanVehiclesRules.keys,
-};
+      ...xrechnungRules.keys,
+      ...xrechnungExtensionRules.keys,
+      ...xrechnungCleanVehiclesRules.keys,
+    };
 
 /// Every XRechnung rule this package has an answer for, whichever the answer
 /// is.
 Set<String> get accountedXrechnungRules => {
-  ...implementedXrechnungRules,
-  ...xrechnungMetByConstruction.keys,
-  ...xrechnungForTheSyntax.keys,
-};
+      ...implementedXrechnungRules,
+      ...xrechnungMetByConstruction.keys,
+      ...xrechnungForTheSyntax.keys,
+    };
 
 /// The rules of the standard a profile rewrites, and what rewrites them.
 ///

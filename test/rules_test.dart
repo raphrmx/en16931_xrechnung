@@ -535,38 +535,38 @@ void main() {
 }
 
 SupportingDocument _attached(String mimeCode) => SupportingDocument(
-  'A',
-  attachment: Attachment(
-    bytes: Uint8List(1),
-    mimeCode: mimeCode,
-    filename: 'beleg',
-  ),
-);
+      'A',
+      attachment: Attachment(
+        bytes: Uint8List(1),
+        mimeCode: mimeCode,
+        filename: 'beleg',
+      ),
+    );
 
 /// The same invoice with the rate taken off its breakdown, which is how an
 /// invoice read from elsewhere comes back when the document left it out.
 Invoice _withoutBreakdownRate(Invoice invoice) => Invoice(
-  number: invoice.number,
-  issueDate: invoice.issueDate,
-  typeCode: invoice.typeCode,
-  currency: invoice.currency,
-  specificationIdentifier: invoice.specificationIdentifier,
-  buyerReference: invoice.buyerReference,
-  seller: invoice.seller,
-  buyer: invoice.buyer,
-  lines: invoice.lines,
-  delivery: invoice.delivery,
-  paymentInstructions: invoice.paymentInstructions,
-  totals: invoice.totals,
-  vatBreakdown: [
-    for (final entry in invoice.vatBreakdown)
-      VatBreakdown(
-        category: entry.category,
-        taxableAmount: entry.taxableAmount,
-        taxAmount: entry.taxAmount,
-      ),
-  ],
-);
+      number: invoice.number,
+      issueDate: invoice.issueDate,
+      typeCode: invoice.typeCode,
+      currency: invoice.currency,
+      specificationIdentifier: invoice.specificationIdentifier,
+      buyerReference: invoice.buyerReference,
+      seller: invoice.seller,
+      buyer: invoice.buyer,
+      lines: invoice.lines,
+      delivery: invoice.delivery,
+      paymentInstructions: invoice.paymentInstructions,
+      totals: invoice.totals,
+      vatBreakdown: [
+        for (final entry in invoice.vatBreakdown)
+          VatBreakdown(
+            category: entry.category,
+            taxableAmount: entry.taxableAmount,
+            taxAmount: entry.taxAmount,
+          ),
+      ],
+    );
 
 /// An invoice for a vehicle, under the clean vehicles profile.
 Invoice _vehicleInvoice({
@@ -579,8 +579,7 @@ Invoice _vehicleInvoice({
   final lines = [
     InvoiceLine.of(
       id: '1',
-      item:
-          item ??
+      item: item ??
           Item(
             name: 'Lieferwagen',
             classificationIdentifiers: [Identifier(category, scheme: 'CVD')],

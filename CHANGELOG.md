@@ -1,3 +1,16 @@
+## 0.1.3
+
+- The package asks for Dart 3.3 instead of 3.11, so a project that has not
+  moved yet can take it.
+
+## 0.1.2
+
+- `homepage` points at the package's card on comapps.web.app, which lists
+  every package published under COMAPPS.
+- The README badge row carries a Live demo badge, the maintainer again, and a
+  licence badge in a colour of its own rather than the grey shields puts in
+  every label. Nothing about the library changed.
+
 ## 0.1.1
 
 - The README says that Peppol and the German portals carry the same document,

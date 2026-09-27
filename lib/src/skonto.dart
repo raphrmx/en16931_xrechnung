@@ -17,11 +17,12 @@ final class Skonto {
     required int days,
     required num percentage,
     num? baseAmount,
-  }) => Skonto(
-    days: days,
-    percentage: exact(percentage),
-    baseAmount: baseAmount == null ? null : exact(baseAmount),
-  );
+  }) =>
+      Skonto(
+        days: days,
+        percentage: exact(percentage),
+        baseAmount: baseAmount == null ? null : exact(baseAmount),
+      );
 
   /// How many days from the invoice date the discount holds for.
   final int days;
@@ -99,9 +100,8 @@ List<Skonto> readSkonto(String? paymentTerms) {
       Skonto(
         days: int.parse(match.group(1)!),
         percentage: Decimal.parse(match.group(2)!),
-        baseAmount: match.group(3) == null
-            ? null
-            : Decimal.parse(match.group(3)!),
+        baseAmount:
+            match.group(3) == null ? null : Decimal.parse(match.group(3)!),
       ),
     );
   }

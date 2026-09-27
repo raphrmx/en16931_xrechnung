@@ -28,7 +28,7 @@ const String _directory = 'examples_from_kosit';
 const Map<String, String> _beyondTheModel = {
   'extension_05.01a-INVOICE_ubl.xml':
       'Carries a third party payment (BT-DEX-002), which EN 16931 cannot '
-      'express, so BT-115 cannot reconcile.',
+          'express, so BT-115 cannot reconcile.',
 };
 
 void main() {

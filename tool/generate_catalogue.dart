@@ -285,7 +285,7 @@ const Map<String, String> _listDoc = {
       'The registers a party identifier (BT-29, BT-46) may be issued under.',
   'xrechnungElectronicAddressSchemes':
       'The registers an electronic address (BT-34, BT-49) may be issued '
-      'under.',
+          'under.',
   'xrechnungDigaSchemes':
       'The registers the extension adds for digital health applications.',
   'xrechnungItemClassificationSchemes':

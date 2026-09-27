@@ -17,9 +17,8 @@ bool isIban(String value) {
     // A digit is itself; a letter is the two digits 10 to 35, which is why
     // the remainder is carried rather than the number, as the number runs
     // past what an int holds.
-    final digits = unit >= _a
-        ? (unit - _a + 10).toString()
-        : (unit - _zero).toString();
+    final digits =
+        unit >= _a ? (unit - _a + 10).toString() : (unit - _zero).toString();
     for (final digit in digits.codeUnits) {
       remainder = (remainder * 10 + (digit - _zero)) % 97;
     }

@@ -5,8 +5,8 @@ import 'package:en16931_xrechnung/src/profile.dart';
 import 'package:en16931_xrechnung/src/skonto.dart';
 
 /// Checks one XRechnung rule against an invoice.
-typedef XrechnungCheck =
-    Iterable<RuleViolation> Function(Invoice invoice, RuleDescriptor rule);
+typedef XrechnungCheck = Iterable<RuleViolation> Function(
+    Invoice invoice, RuleDescriptor rule);
 
 /// The VAT categories that commit the seller to naming a tax registration.
 ///
@@ -131,8 +131,7 @@ final Map<String, XrechnungCheck> xrechnungCleanVehiclesRules = {
 const Map<String, String> xrechnungMetByConstruction = {
   'BR-DEX-02': 'The model has no sub invoice line to sum.',
   'BR-DEX-03': 'The model has no sub invoice line to carry VAT.',
-  'BR-DEX-09':
-      'With no third party payment, the total due is the one BR-CO-16 '
+  'BR-DEX-09': 'With no third party payment, the total due is the one BR-CO-16 '
       'already checks.',
   'BR-DEX-10': 'The model has no third party payment to type.',
   'BR-DEX-11': 'The model has no third party payment to give an amount.',
@@ -675,15 +674,13 @@ Iterable<RuleViolation> _tmpCvd01(Invoice invoice, RuleDescriptor rule) sync* {
   }
 }
 
-Iterable<Identifier> _vehicleClassifications(InvoiceLine line) => line
-    .item
-    .classificationIdentifiers
-    .where((identifier) => identifier.scheme == _cleanVehicleScheme);
+Iterable<Identifier> _vehicleClassifications(InvoiceLine line) =>
+    line.item.classificationIdentifiers
+        .where((identifier) => identifier.scheme == _cleanVehicleScheme);
 
-Iterable<ItemAttribute> _vehicleAttributes(InvoiceLine line) => line
-    .item
-    .attributes
-    .where((attribute) => attribute.name == _cleanVehicleAttribute);
+Iterable<ItemAttribute> _vehicleAttributes(InvoiceLine line) =>
+    line.item.attributes
+        .where((attribute) => attribute.name == _cleanVehicleAttribute);
 
 // --- Helpers ---------------------------------------------------------------
 
