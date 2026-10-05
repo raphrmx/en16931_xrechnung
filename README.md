@@ -1,11 +1,12 @@
 # EN 16931 XRechnung
 
-[![Live demo](https://img.shields.io/badge/Live_demo-comapps.web.app-3c9a70)](https://comapps.web.app/en16931/)
+[![Live demo](https://img.shields.io/badge/Live_demo-packages.comapps.be-3c9a70)](https://packages.comapps.be/en16931/)
 [![Pub Version](https://img.shields.io/pub/v/en16931_xrechnung?color=0175C2)](https://pub.dev/packages/en16931_xrechnung)
 [![Build](https://img.shields.io/github/actions/workflow/status/raphrmx/en16931_xrechnung/ci.yml?branch=main&label=build)](https://github.com/raphrmx/en16931_xrechnung/actions/workflows/ci.yml)
 ![Maintainer](https://img.shields.io/badge/Maintainer-Raphael_Vrient-733d90)
 [![Licence](https://img.shields.io/badge/Licence-MIT-8C6A3F)](LICENSE)
 ![Platforms](https://img.shields.io/badge/Platforms-Android,_iOS,_macOS,_Windows,_Linux,_Web-22375C.svg)
+[![Donate with PayPal](https://img.shields.io/badge/Donate-PayPal-00457C?logo=paypal&logoColor=white)](https://www.paypal.com/donate/?hosted_button_id=ZN6D382YQAV5N)
 
 XRechnung 3.0: the 61 rules Germany adds to EN 16931, and the identifiers an
 invoice is claimed under.
@@ -131,3 +132,19 @@ Released under the [MIT licence](https://pub.dev/packages/en16931_xrechnung/lice
 The rule catalogue is generated from the artefacts KoSIT publishes, which are
 Apache 2.0. None of their content is redistributed: what is taken from them is
 which rules exist, how severe each is and which terms it bears on.
+
+## More from COMAPPS
+
+The EN 16931 family:
+
+| Package | What it does |
+| --- | --- |
+| [en16931](https://pub.dev/packages/en16931) | The semantic model of the European invoice and the rules of the standard. |
+| [en16931_ubl](https://pub.dev/packages/en16931_ubl) | Writes and reads it as UBL 2.1. |
+| [en16931_cii](https://pub.dev/packages/en16931_cii) | Writes and reads it as UN/CEFACT CII. |
+| [en16931_peppol](https://pub.dev/packages/en16931_peppol) | The Peppol BIS Billing 3.0 profile. |
+| [en16931_facturx](https://pub.dev/packages/en16931_facturx) | The Factur-X profile and its hybrid PDF. |
+| [en16931_ublbe](https://pub.dev/packages/en16931_ublbe) | The UBL.BE profile, for Belgian accounting software. |
+
+Every package COMAPPS publishes is listed at
+[packages.comapps.be](https://packages.comapps.be).
