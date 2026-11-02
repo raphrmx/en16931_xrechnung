@@ -14,6 +14,8 @@ invoice is claimed under.
 Every invoice to a German public body goes under this profile. An invoice can
 satisfy the standard and still be refused. This says so before it is sent.
 
+![Which en16931 packages for which invoice: build and check with en16931, then en16931_peppol and en16931_ubl over Peppol, en16931_ublbe for Belgian accounting, en16931_xrechnung for a German public body, en16931_facturx for a French invoice](https://public.comapps.be/packages/en16931/en16931_situations.svg)
+
 ## Install
 
 ```yaml
@@ -125,6 +127,10 @@ the rules of the standard are in
 body, over Peppol or through one of the German portals, does not change the
 document.
 
+XRechnung is defined in both syntaxes, and German public bodies take either:
+write it with the one the application already uses, CII next to Factur-X or
+ZUGFeRD, UBL next to Peppol invoices.
+
 ## License
 
 Released under the [MIT licence](https://pub.dev/packages/en16931_xrechnung/license).
@@ -136,6 +142,8 @@ which rules exist, how severe each is and which terms it bears on.
 ## More from COMAPPS
 
 The EN 16931 family:
+
+![The en16931 packages: the model, en16931_ubl and en16931_cii for the syntaxes, then the profiles built on them](https://public.comapps.be/packages/en16931/en16931.svg)
 
 | Package | What it does |
 | --- | --- |
